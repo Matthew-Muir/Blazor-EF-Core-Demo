@@ -1,0 +1,19 @@
+﻿@page "/"
+@using BlazorEF.Data
+@inject IPetService PetService
+<PageTitle>Index</PageTitle>
+
+@foreach (var pet in PetService.Pets)
+{
+    <span>@pet.Name</span>
+    <br />
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await PetService.GetAll();
+    }
+
+
+}
